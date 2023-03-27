@@ -1,4 +1,4 @@
---1)
+--1) AAAAAAAAAAAAAAA
 --a)
 esCero :: Int -> Bool
 esCero x = (x == 0) 
