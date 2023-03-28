@@ -1,4 +1,4 @@
---1) AAAAAAAAAAAAAAA
+--1)
 --a)
 esCero :: Int -> Bool
 esCero x = (x == 0) 
@@ -158,3 +158,12 @@ primIgualesA' y (x:xs) = takeWhile (== y) xs
 
 --11)
 --a)
+primIguales :: Eq a => [a] -> [a] 
+primIguales [] = []
+primIguales (x:xs) | (xs == []) = []
+                   | (x == head xs) = x : primIguales xs 
+                   | otherwise = x : []
+
+--b)
+primIguales' :: Eq a => [a] -> [a] 
+primIguales' (x:xs) = primIgualesA x (x:xs)
