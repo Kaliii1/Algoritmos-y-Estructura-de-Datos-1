@@ -120,7 +120,7 @@ busca (Encolada p c) g | (p == Docente g) = Just p
 
 
 --8) a)
-data ListaAsoc a b = Vacia | Nodo a b ( ListaAsoc a b ) deriving Show
+data ListaAsoc a b = Vacia | Nodo a b ( ListaAsoc a b ) 
 
 type GuiaTelefonica = ListaAsoc (String, String) (Int, Int) 
 
@@ -142,10 +142,26 @@ la_concat (Nodo a1 b1 d) lista2 = Nodo a1 b1 (la_concat d lista2)
 la_agregar :: Eq a => ListaAsoc a b -> a -> b -> ListaAsoc a b
 la_agregar Vacia clave valor = Nodo clave valor Vacia
 la_agregar (Nodo c v restante) clave valor | (c == clave) = Nodo c valor restante 
-                                           | otherwise = la_agregar restante clave valor
+                                           | otherwise = Nodo c v (la_agregar restante clave valor)
 
 
 --4) 
 la_pares :: ListaAsoc a b -> [(a, b)]
+la_pares Vacia = [] 
+la_pares (Nodo a b c) = (a,b) : la_pares c 
 
+
+--5)
+la_busca :: Eq a => ListaAsoc a b -> a -> Maybe b
+la_busca Vacia clave = Nothing
+la_busca (Nodo a b d) clave | (clave == a) = Just b 
+                      | otherwise = la_busca d clave 
+
+
+--6)
+la_borrar :: Eq a => a -> ListaAsoc a b -> ListaAsoc a b
+la_borrar clave Vacia = Vacia 
+la_borrar clave (Nodo c v restante)
+    | (clave == c) = restante
+    | otherwise = Nodo c v (la_borrar clave restante)
 
