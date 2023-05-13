@@ -118,6 +118,8 @@ int main (void) {
     printf ("Dame valor de y\n");
     scanf ("%d", &y);
 
+    //Acá no use el sprint porque no hace falta que me muestre los cálculos pero tranquilamente lo podría haber hecho.
+    
     y = y + y;
     x = x + y;
 
