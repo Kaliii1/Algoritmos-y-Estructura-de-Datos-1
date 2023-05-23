@@ -285,6 +285,7 @@ int main (void) {
 
 //Ejercicio 6) a) y b)
 #include <stdio.h>
+#include <stdbool.h>
 int pedirEntero (void) {
     int x;
     printf ("Dame valor x\n");
@@ -321,9 +322,6 @@ int main (void) {
     }
 
     imprimeEntero (m);
-    imprimeEntero (y);
-    imprimeEntero (z);
-    imprimeEntero (x);
 
     if (m < z) {
         m = m;
@@ -332,9 +330,6 @@ int main (void) {
     }
 
     imprimeEntero (m);
-    imprimeEntero (y);
-    imprimeEntero (z);
-    imprimeEntero (x);
     
     return 0;
 }
