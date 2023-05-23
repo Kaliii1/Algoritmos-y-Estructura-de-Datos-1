@@ -74,7 +74,7 @@ int main (void) {
     }
 
     //Ejercicio 3) 3)
-#include <stdio.h> 
+#include <stdio.h>
 int main (void) {
     
     //1.a)
@@ -186,4 +186,173 @@ int main (void) {
     printf ("El valor de x se actualizó a %d\n", x);
     printf ("El valor de z se actualizó a %d\n", z);
     printf ("El valor de m se actualizó a %d\n", m);
+}
+
+
+//Ejercicio 5) a) 1.h
+#include <stdio.h>
+int main (void) {
+
+    int x;
+
+    printf ("Dame valor x\n");
+    scanf ("%d", &x);
+
+//"While" sería el "Do" en la anotación del profe.
+
+    while (x!=0) {
+        x = x - 1;
+    }
+
+//Pone el último valor de X almacenado.
+
+    printf ("Valor actualizado de x es %d\n", x);
+}
+
+//Ejercicio 5) a) 1.i
+#include <stdio.h>
+int main (void) {
+
+    int x;
+
+    printf ("Dame valor x\n");
+    scanf ("%d", &x);
+
+    while (x != 0) {
+        x = 0;
+    }
+    
+    printf ("El valor de X se actualizó a %d\n", x);
+
+}
+
+
+//Ejercicio 5) 1b)
+#include <stdio.h>
+int main (void) {
+
+    int x, y, i;
+
+    printf ("Dame valor i\n");
+    scanf ("%d", &i);
+
+    printf ("Dame valor x\n");
+    scanf ("%d", &x);
+
+    printf ("Dame valor de y\n");
+    scanf ("%d", &y);
+    
+    i = 0;
+
+    while (x >= y) {
+        x = x - y;
+        i = i + 1;
+    }
+
+    printf ("El valor de y se actualizó a %d\n", y);
+    printf ("El valor de x se actualizó a %d\n", x);
+    printf ("El valor de i se actualizó a %d\n", i);
+}
+
+//Ejercicio 5) 2b)
+#include <stdio.h>
+int main (void) {
+
+    int x, y, i;
+
+    printf ("Dame valor i\n");
+    scanf ("%d", &i);
+
+    printf ("Dame valor x\n");
+    scanf ("%d", &x);
+
+    printf ("Dame valor de y\n");
+    scanf ("%d", &y);
+
+    i = 2;
+    res = True;
+
+    while (i < x && res) {
+        res = res && (mod (x, i) != 0);
+        i = i + 1;
+    }
+
+    printf ("El valor de y se actualizó a %d\n", y);
+    printf ("El valor de x se actualizó a %d\n", x);
+    printf ("El valor de i se actualizó a %d\n", i);
+}
+
+
+//Ejercicio 6) a) y b)
+#include <stdio.h>
+int pedirEntero (void) {
+    int x;
+    printf ("Dame valor x\n");
+    scanf ("%d", &x);
+    return x;
+}
+
+void imprimeEntero (int x) {
+    printf ("El valor de X es %d\n", x);
+}
+
+// int main (void) {
+
+//     int x;
+
+//     x = pedirEntero ();
+//     imprimeEntero (x);
+// }
+
+int main (void) {
+
+    int x, y, z, m;
+
+    x = pedirEntero ();
+    y = pedirEntero ();
+    z = pedirEntero ();
+    m = pedirEntero ();
+
+    
+    if (x < y) {
+        m = x;
+    } else {
+        m = y;
+    }
+
+    imprimeEntero (m);
+    imprimeEntero (y);
+    imprimeEntero (z);
+    imprimeEntero (x);
+
+    if (m < z) {
+        m = m;
+    } else {
+        m = z;
+    }
+
+    imprimeEntero (m);
+    imprimeEntero (y);
+    imprimeEntero (z);
+    imprimeEntero (x);
+    
+    return 0;
+}
+
+
+//Ejercicio 6) c)
+#include <stdio.h>
+void imprimeHola (void) {
+    printf ("Hola\n");
+}
+
+void imprimeChau (void) {
+    printf ("Chau\n");
+}
+
+void main (void) {
+    imprimeHola ();
+    imprimeHola ();
+    imprimeChau ();
+    imprimeChau ();
 }
