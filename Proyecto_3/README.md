@@ -1,7 +1,6 @@
-ALGORITMO Y ESTRUCTURA DE DATOS 1
-—----------------------------------------------------------
-PROYECTO 3
-—---------------------
+# ALGORITMO Y ESTRUCTURA DE DATOS 1
+
+# PROYECTO 3
 
 Este es un conjunto de funciones de C para la materia Algoritmos 1, que se describen a continuación:
 
