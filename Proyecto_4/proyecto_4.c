@@ -305,6 +305,7 @@ int main (void) {
     printf ("La sumatoria de los elementos del arreglo es %d", res);
 }
 
+
 //Ejercicio 7)
 #include <stdio.h>
 #include <stdbool.h>
@@ -390,6 +391,7 @@ int main (void) {
     }
 }
 
+
 //Ejercicio 8)
 #include <stdio.h>
 #include <assert.h>
@@ -445,3 +447,150 @@ int main (void) {
     imprimeArreglo (a, largo);
 }
 
+
+//Ejercicio 9)
+#include <stdio.h>
+#include <limits.h>
+
+void pedirArreglo (int a [], int n_max) {
+    int i = 0; 
+
+    while (i < n_max) {
+        printf ("Ingrese el valor de la posicion [%d]", i);
+        scanf ("%d", &a [i]);
+        i++;
+    }
+}
+
+void imprimeArreglo(int a[], int n_max){
+     int i=0;
+     while(i<n_max){
+        printf ("En la posicion %d, el valor es %d\n", i,a[i]);
+        i++;
+    }
+}
+
+//int minimo (int a, int b) {
+//    return (a < b) ? a : b;
+//    }
+    //En este caso, la función minimo toma dos argumentos a y b y devuelve el valor más pequeño de los dos. 
+    //Se utiliza el operador condicional (?:) para comparar los dos valores y devolver el menor.
+
+int minimo_pares (int a[], int tam){
+    int p = 0, res=INT_MAX;
+    while (p < tam){
+        if (a[p] %2 == 0){
+            res=a[p];
+            p++;
+        } else {
+            p++;
+    } return res;
+}
+}
+
+int minimo_impares(int a[], int tam){
+    int p = 0,res=INT_MAX;
+    while (p < tam){
+        if (a[p] %2 !=0){
+            res = a[p];
+            p++;
+        }else{
+            p++;
+        }
+    }return res;
+}
+
+
+int main (void) {
+    int largo, par, impar;
+    printf ("Ingrese el largo del arreglo\n");
+    scanf ("%d", &largo);
+
+    int a[largo];
+    pedirArreglo (a, largo);
+    imprimeArreglo (a, largo);
+    par = minimo_pares (a, largo);
+    impar = minimo_impares (a, largo);
+
+    if (par < impar) {
+         printf ("El minimo elemento del arreglo es %d", par);
+    } else {
+        printf ("El minimo elemento del arreglo es %d", impar);
+    }
+
+   
+}
+
+
+//Ejercicio 10)
+#include <stdio.h>
+
+void pedirArreglo (int a [], int n_max) {
+    int i = 0; 
+
+    while (i < n_max) {
+        printf ("Ingrese el valor de la posicion [%d]", i);
+        scanf ("%d", &a [i]);
+        i++;
+    }
+}
+
+void imprimeArreglo(int a[], int n_max){
+     int i=0;
+     while(i<n_max){
+        printf ("En la posicion %d, el valor es %d\n", i,a[i]);
+        i++;
+    }
+}
+
+int pedirEntero (void) {
+    int x;
+    printf ("Ingrese el valor del elemento");
+    scanf ("%d", &x);
+    return x;
+}
+
+struct com_t {
+    int mayores;
+    int iguales;
+    int menores;
+};
+
+struct com_t cuantos (int a[], int largo, int elem) {
+    struct com_t c;
+    int p;
+    p = 0;
+    c.iguales = 0;
+    c.menores = 0;
+    c.mayores = 0;
+
+    while (p<largo) {
+        if (elem > a[p]) {
+            c.menores++;
+        } else {
+            if (elem < a[p]) {
+                c.mayores++;
+            } else {
+                c.iguales;
+            }
+        } p++;
+    } return c;
+}
+
+int main (void) {
+    int largo, elemento;
+    printf ("Ingrese el largo del arreglo\n");
+    scanf ("%d", &largo);
+
+    elemento = pedirEntero ();
+
+    int a[largo];
+    pedirArreglo (a, largo);
+    imprimeArreglo (a, largo);
+
+    struct com_t miCuantos;
+    miCuantos = cuantos (a, largo, elemento);
+
+    printf ("Em el arreglo el total de menores al elemento son %d, el total de iguales al elemento son %d y el total de mayores al elemento son %d", miCuantos.menores,
+    miCuantos.iguales, miCuantos.mayores);
+}
