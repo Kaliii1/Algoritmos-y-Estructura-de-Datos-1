@@ -1,6 +1,6 @@
 # ALGORITMO Y ESTRUCTURA DE DATOS 1
 
-#PROYECTO 4
+# PROYECTO 4
 
 Este es un proyecto que contiene una serie de programas en lenguaje C relacionados con la materia Algoritmo y Estructura de Datos 1. Estos programas abordan diferentes aspectos de la programación en C y ofrecen ejemplos de implementación de varias funcionalidades.
 
