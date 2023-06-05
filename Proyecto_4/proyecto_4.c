@@ -594,3 +594,207 @@ int main (void) {
     printf ("Em el arreglo el total de menores al elemento son %d, el total de iguales al elemento son %d y el total de mayores al elemento son %d", miCuantos.menores,
     miCuantos.iguales, miCuantos.mayores);
 }
+
+
+//Ejercicio 11)
+#include <stdio.h>
+
+void pedirArreglo (float a [], int n_max) {
+    //Acá tuve que cambiar el "int" por el "float".
+    int i = 0; 
+
+    while (i < n_max) {
+        printf ("Ingrese el valor de la posicion [%d]", i);
+        //En el scanf pongo un float porque debo ingresar el valor de esa posicion y es por eso que mi posicion sigue como int.
+        scanf ("%f", &a [i]);
+        i++;
+    }
+}
+
+void imprimeArreglo(float a[], int n_max){
+     int i=0;
+     while(i<n_max){
+        //Aca lo mismo... mi posicion tiene que ser un entero y mi numero dentro de esa posicion debe ser un float.
+        printf ("En la posicion %d, el valor es %f\n", i,a[i]);
+        i++;
+    }
+}
+
+struct datos_t {
+    float maximo;
+    float minimo;
+    float promedio;
+};
+
+struct datos_t stats (float a[], int largo) {
+    struct datos_t v;
+    int p = 0;
+    v.promedio = 0;
+    v.maximo = a[0];
+    v.minimo = a[0];
+
+    while (p < largo) {
+        //Se va a ir sumando los elementos y guardando en v.promedio.
+        v.promedio += a[p];
+        
+        if (a[p] > v.maximo) {
+            //Al darle valor a[0], va a comprar el primer elemento con el primer elemento y despues el segundo y asi hasta encontrar uno más grande
+            //y cuando uno sea mayor, actualizara el valor v.maximo a ese elemento encontrado (lo mismo sucede con minimo).
+            v.maximo = a[p];
+        } else if (a[p] < v.minimo) {
+            v.minimo = a[p];
+        }
+        p++;
+    }
+    v.promedio /= largo;
+    return v;
+}
+
+int main (void) {
+    int largo;
+    printf ("Ingrese el largo del arreglo\n");
+    scanf ("%d", &largo);
+
+    float a[largo];
+    pedirArreglo (a, largo);
+    imprimeArreglo (a, largo);
+
+    struct datos_t valores;
+    valores = stats (a, largo);
+
+    printf ("El promedio del arreglo es %f, el maximo es %f, y el minimo es %f", valores.promedio, valores.maximo, valores.minimo);
+}   
+
+
+//Ejercicio 12)
+#include <stdio.h>
+#include <stdbool.h>
+
+const int largo = 3;
+
+typedef char clave_t;
+typedef int valor_t;
+
+struct asoc {
+    clave_t clave;
+    valor_t valor;
+};
+
+
+bool asoc_existe(struct asoc a[], int largo, clave_t c) {
+    int i = 0;
+    
+    while (i < largo) {
+        //Puse a[i].clave porque ya es algo que está definido en mi a[] y no tengo que darle ninguna variable porque no me devuelve eso, sino que ingreso eso. 
+        //(Es como si ya estuviera definido).
+        if (c == a[i].clave) {
+            return true;
+        }
+        i++;        
+    }
+    //El return va afuera porque cuando ingreso return, la funcion ya se cierra completamente entonces si yo pongo return false adentro del if, se cierra con
+    //el false y no sigue con el resto de los elementos.
+    return false;
+}
+
+
+void pedir_estructuras(struct asoc a[], int largo) {
+    int i = 0;
+    
+    while (i < largo) {
+        printf("Clave de la posicion %d: ", i);
+        scanf(" %c", &a[i].clave);
+        printf("Valor de la posicion %d: ", i);
+        scanf("%d", &a[i].valor);
+        i++;
+    }
+}
+
+
+void imprimir_estructuras(struct asoc a[], int largo) {
+    int i = 0;
+    
+    while (i < largo) {
+        printf("Clave: %c\n", a[i].clave);
+        printf("Valor: %d\n", a[i].valor);
+        printf("\n");
+
+        i++;
+    }
+}
+
+
+int main(void) {
+    
+    clave_t c;
+    //Pedir c al usuario
+    //Solicito clave
+    printf("Ingrese una clave: ");
+    //Cuando uso %c (que es char) debo poner un espacio antes del %.
+    scanf(" %c", &c);
+
+    struct asoc a[largo];
+    pedir_estructuras(a, largo);
+    imprimir_estructuras(a, largo);
+    
+    //Ejecuto mi funcion en mi if ya que mi funcion me devuelve un bool y el if sirve solo para los booleanos.
+
+    if (asoc_existe(a, largo, c)) {
+        printf("La clave en el arreglo");   
+    }
+    else {
+        printf("La clave no esta en el arreglo"); 
+    }
+}
+
+
+//Ejercicio 13)
+#include <stdio.h>
+
+int pedirEntero(void){
+    int a;
+    printf("Ingrese un entero:");
+    scanf("%d",&a);
+    return a;
+}
+
+int es_primo(int x){
+	int res,i;
+    i=2;
+    res = 1;
+	while (i < x && res)
+    {
+        res = res && ((x % i) != 0);
+        i++;
+    }
+    return res;
+}
+
+int nesimo_primo(int N){
+    int num,contador;
+    contador=2;
+    num=3;
+    if(N==1){
+        return 2;
+    }
+    while(contador<N){
+        num = num + 2;
+        if(es_primo(num)){
+            contador = contador + 1;
+        }
+    }
+    return num;
+}
+
+int main(void) {
+    int n,res;
+    n = pedirEntero();
+    while(n<0){
+            printf("Error, ingrese un entero positivo\n");
+            n = pedirEntero();
+        }
+    res = nesimo_primo(n);
+    printf("El primo de la posicion %d es:%d",n,res);
+}
+
+//Por fin terminé.
